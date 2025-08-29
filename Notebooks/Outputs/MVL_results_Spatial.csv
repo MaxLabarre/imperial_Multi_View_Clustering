@@ -1,0 +1,345 @@
+n_components,k,Silhouette,Strategy,Model
+2,4,0.6844990849494934,Early Integration,Masked Autoencoder
+2,5,0.6144890189170837,Early Integration,Masked Autoencoder
+2,6,0.6085532903671265,Early Integration,Masked Autoencoder
+2,7,0.6211638450622559,Early Integration,Masked Autoencoder
+2,8,0.6130214333534241,Early Integration,Masked Autoencoder
+2,9,0.527735710144043,Early Integration,Masked Autoencoder
+2,10,0.5366100668907166,Early Integration,Masked Autoencoder
+2,11,0.5460370779037476,Early Integration,Masked Autoencoder
+2,12,0.5508102774620056,Early Integration,Masked Autoencoder
+2,13,0.537678062915802,Early Integration,Masked Autoencoder
+2,14,0.5505953431129456,Early Integration,Masked Autoencoder
+2,15,0.5549988150596619,Early Integration,Masked Autoencoder
+3,4,0.6350550651550293,Early Integration,Masked Autoencoder
+3,5,0.578436553478241,Early Integration,Masked Autoencoder
+3,6,0.6302887201309204,Early Integration,Masked Autoencoder
+3,7,0.6304068565368652,Early Integration,Masked Autoencoder
+3,8,0.5692664980888367,Early Integration,Masked Autoencoder
+3,9,0.544812023639679,Early Integration,Masked Autoencoder
+3,10,0.5423556566238403,Early Integration,Masked Autoencoder
+3,11,0.5426596403121948,Early Integration,Masked Autoencoder
+3,12,0.5413311719894409,Early Integration,Masked Autoencoder
+3,13,0.5347984433174133,Early Integration,Masked Autoencoder
+3,14,0.5232208967208862,Early Integration,Masked Autoencoder
+3,15,0.5298988223075867,Early Integration,Masked Autoencoder
+4,4,0.6750103235244751,Early Integration,Masked Autoencoder
+4,5,0.5820541381835938,Early Integration,Masked Autoencoder
+4,6,0.6218301057815552,Early Integration,Masked Autoencoder
+4,7,0.6378039717674255,Early Integration,Masked Autoencoder
+4,8,0.6346371173858643,Early Integration,Masked Autoencoder
+4,9,0.5546847581863403,Early Integration,Masked Autoencoder
+4,10,0.5339493155479431,Early Integration,Masked Autoencoder
+4,11,0.5345240235328674,Early Integration,Masked Autoencoder
+4,12,0.518794596195221,Early Integration,Masked Autoencoder
+4,13,0.5221835374832153,Early Integration,Masked Autoencoder
+4,14,0.5258393883705139,Early Integration,Masked Autoencoder
+4,15,0.523662269115448,Early Integration,Masked Autoencoder
+5,4,0.6367357969284058,Early Integration,Masked Autoencoder
+5,5,0.5912311673164368,Early Integration,Masked Autoencoder
+5,6,0.6097649931907654,Early Integration,Masked Autoencoder
+5,7,0.6231590509414673,Early Integration,Masked Autoencoder
+5,8,0.6190503835678101,Early Integration,Masked Autoencoder
+5,9,0.5442562103271484,Early Integration,Masked Autoencoder
+5,10,0.5376574397087097,Early Integration,Masked Autoencoder
+5,11,0.5401192307472229,Early Integration,Masked Autoencoder
+5,12,0.5299205780029297,Early Integration,Masked Autoencoder
+5,13,0.5338379144668579,Early Integration,Masked Autoencoder
+5,14,0.5372461676597595,Early Integration,Masked Autoencoder
+5,15,0.5387492775917053,Early Integration,Masked Autoencoder
+2,4,0.6082904873176713,Early Integration,Masked Cosine Distance w/ Concat
+2,5,0.48680763468681765,Early Integration,Masked Cosine Distance w/ Concat
+2,6,0.4417772128846862,Early Integration,Masked Cosine Distance w/ Concat
+2,7,0.46080185528830897,Early Integration,Masked Cosine Distance w/ Concat
+2,8,0.4329835232242392,Early Integration,Masked Cosine Distance w/ Concat
+2,9,0.43888641238971865,Early Integration,Masked Cosine Distance w/ Concat
+2,10,0.43782040006504175,Early Integration,Masked Cosine Distance w/ Concat
+2,11,0.4424568248085132,Early Integration,Masked Cosine Distance w/ Concat
+2,12,0.42786134938765874,Early Integration,Masked Cosine Distance w/ Concat
+2,13,0.4262767524987585,Early Integration,Masked Cosine Distance w/ Concat
+2,14,0.42595030989425886,Early Integration,Masked Cosine Distance w/ Concat
+3,4,0.49307963215875084,Early Integration,Masked Cosine Distance w/ Concat
+3,5,0.489085639080456,Early Integration,Masked Cosine Distance w/ Concat
+3,6,0.3973202488380404,Early Integration,Masked Cosine Distance w/ Concat
+3,7,0.36033743863769446,Early Integration,Masked Cosine Distance w/ Concat
+3,8,0.3509816020219129,Early Integration,Masked Cosine Distance w/ Concat
+3,9,0.3660818481648838,Early Integration,Masked Cosine Distance w/ Concat
+3,10,0.3571911164522452,Early Integration,Masked Cosine Distance w/ Concat
+3,11,0.3575501574887795,Early Integration,Masked Cosine Distance w/ Concat
+3,12,0.36378059810900504,Early Integration,Masked Cosine Distance w/ Concat
+3,13,0.37375904274057836,Early Integration,Masked Cosine Distance w/ Concat
+3,14,0.3818287026142628,Early Integration,Masked Cosine Distance w/ Concat
+4,4,0.4905146331904343,Early Integration,Masked Cosine Distance w/ Concat
+4,5,0.4865724400377791,Early Integration,Masked Cosine Distance w/ Concat
+4,6,0.38430225466393764,Early Integration,Masked Cosine Distance w/ Concat
+4,7,0.34719083640265297,Early Integration,Masked Cosine Distance w/ Concat
+4,8,0.33712947997863474,Early Integration,Masked Cosine Distance w/ Concat
+4,9,0.35746699582840286,Early Integration,Masked Cosine Distance w/ Concat
+4,10,0.35184407279921825,Early Integration,Masked Cosine Distance w/ Concat
+4,11,0.3564924759232438,Early Integration,Masked Cosine Distance w/ Concat
+4,12,0.36126336215273275,Early Integration,Masked Cosine Distance w/ Concat
+4,13,0.3703161368396332,Early Integration,Masked Cosine Distance w/ Concat
+4,14,0.37647741650952676,Early Integration,Masked Cosine Distance w/ Concat
+5,4,0.4884373722761013,Early Integration,Masked Cosine Distance w/ Concat
+5,5,0.48449836147612174,Early Integration,Masked Cosine Distance w/ Concat
+5,6,0.38400633571892456,Early Integration,Masked Cosine Distance w/ Concat
+5,7,0.34509180831558617,Early Integration,Masked Cosine Distance w/ Concat
+5,8,0.33521711214617833,Early Integration,Masked Cosine Distance w/ Concat
+5,9,0.3610109703994046,Early Integration,Masked Cosine Distance w/ Concat
+5,10,0.3483152479770035,Early Integration,Masked Cosine Distance w/ Concat
+5,11,0.3540876345111983,Early Integration,Masked Cosine Distance w/ Concat
+5,12,0.35800512015782604,Early Integration,Masked Cosine Distance w/ Concat
+5,13,0.3655404633985431,Early Integration,Masked Cosine Distance w/ Concat
+5,14,0.37090665645629545,Early Integration,Masked Cosine Distance w/ Concat
+2,4,0.6237393234552617,Early Integration,Masked Non-Negative Matrix Factorization
+2,5,0.6351529046581943,Early Integration,Masked Non-Negative Matrix Factorization
+2,6,0.5915633375136197,Early Integration,Masked Non-Negative Matrix Factorization
+2,7,0.5971133207725988,Early Integration,Masked Non-Negative Matrix Factorization
+2,8,0.604097510481625,Early Integration,Masked Non-Negative Matrix Factorization
+2,9,0.5575123528195377,Early Integration,Masked Non-Negative Matrix Factorization
+2,10,0.5563510412670462,Early Integration,Masked Non-Negative Matrix Factorization
+2,11,0.544219694975313,Early Integration,Masked Non-Negative Matrix Factorization
+2,12,0.5421084502633439,Early Integration,Masked Non-Negative Matrix Factorization
+2,13,0.5412547467553281,Early Integration,Masked Non-Negative Matrix Factorization
+2,14,0.5432254894668026,Early Integration,Masked Non-Negative Matrix Factorization
+2,15,0.5458801508597019,Early Integration,Masked Non-Negative Matrix Factorization
+2,4,0.7745785123259401,Intermediate Integration,Multi-View Similarity Fusion
+2,5,0.7718755818375235,Intermediate Integration,Multi-View Similarity Fusion
+2,6,0.6621595533314972,Intermediate Integration,Multi-View Similarity Fusion
+2,7,0.6269211467186291,Intermediate Integration,Multi-View Similarity Fusion
+2,8,0.5738001862573617,Intermediate Integration,Multi-View Similarity Fusion
+2,9,0.5777194317548293,Intermediate Integration,Multi-View Similarity Fusion
+2,10,0.5645350076671032,Intermediate Integration,Multi-View Similarity Fusion
+2,11,0.5574388725890732,Intermediate Integration,Multi-View Similarity Fusion
+2,12,0.5486681015760423,Intermediate Integration,Multi-View Similarity Fusion
+2,13,0.557289022710162,Intermediate Integration,Multi-View Similarity Fusion
+2,14,0.5220915971290447,Intermediate Integration,Multi-View Similarity Fusion
+2,15,0.5307810882290882,Intermediate Integration,Multi-View Similarity Fusion
+3,4,0.7649090152507754,Intermediate Integration,Multi-View Similarity Fusion
+3,5,0.7608148431900025,Intermediate Integration,Multi-View Similarity Fusion
+3,6,0.6584787706743324,Intermediate Integration,Multi-View Similarity Fusion
+3,7,0.6263697609787628,Intermediate Integration,Multi-View Similarity Fusion
+3,8,0.5816811444631069,Intermediate Integration,Multi-View Similarity Fusion
+3,9,0.5885241777077614,Intermediate Integration,Multi-View Similarity Fusion
+3,10,0.5735301446650725,Intermediate Integration,Multi-View Similarity Fusion
+3,11,0.5663557229257938,Intermediate Integration,Multi-View Similarity Fusion
+3,12,0.560280291755722,Intermediate Integration,Multi-View Similarity Fusion
+3,13,0.5649090741268569,Intermediate Integration,Multi-View Similarity Fusion
+3,14,0.560967715550687,Intermediate Integration,Multi-View Similarity Fusion
+3,15,0.5715145765162359,Intermediate Integration,Multi-View Similarity Fusion
+4,4,0.7341967900136412,Intermediate Integration,Multi-View Similarity Fusion
+4,5,0.7296572276310095,Intermediate Integration,Multi-View Similarity Fusion
+4,6,0.6194981127976238,Intermediate Integration,Multi-View Similarity Fusion
+4,7,0.5874010500843475,Intermediate Integration,Multi-View Similarity Fusion
+4,8,0.6019196271010844,Intermediate Integration,Multi-View Similarity Fusion
+4,9,0.5721719284544555,Intermediate Integration,Multi-View Similarity Fusion
+4,10,0.5744969418168316,Intermediate Integration,Multi-View Similarity Fusion
+4,11,0.5555073854243935,Intermediate Integration,Multi-View Similarity Fusion
+4,12,0.5714783592476822,Intermediate Integration,Multi-View Similarity Fusion
+4,13,0.5642883393423698,Intermediate Integration,Multi-View Similarity Fusion
+4,14,0.5602465625448495,Intermediate Integration,Multi-View Similarity Fusion
+4,15,0.5659945957795177,Intermediate Integration,Multi-View Similarity Fusion
+5,4,0.7221699371452414,Intermediate Integration,Multi-View Similarity Fusion
+5,5,0.7175826916891354,Intermediate Integration,Multi-View Similarity Fusion
+5,6,0.606206920226473,Intermediate Integration,Multi-View Similarity Fusion
+5,7,0.5738226144556801,Intermediate Integration,Multi-View Similarity Fusion
+5,8,0.5865339338690032,Intermediate Integration,Multi-View Similarity Fusion
+5,9,0.5507054542795593,Intermediate Integration,Multi-View Similarity Fusion
+5,10,0.5521794934927206,Intermediate Integration,Multi-View Similarity Fusion
+5,11,0.5177488806929167,Intermediate Integration,Multi-View Similarity Fusion
+5,12,0.5334796244674809,Intermediate Integration,Multi-View Similarity Fusion
+5,13,0.544231322137275,Intermediate Integration,Multi-View Similarity Fusion
+5,14,0.5368633353915886,Intermediate Integration,Multi-View Similarity Fusion
+5,15,0.5316193148816672,Intermediate Integration,Multi-View Similarity Fusion
+2,4,0.49174657464027405,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,5,0.48599234223365784,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,6,0.49246126413345337,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,7,0.46395421028137207,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,8,0.44544899463653564,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,9,0.4436846077442169,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,10,0.457128643989563,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,11,0.44724351167678833,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,12,0.45471182465553284,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,13,0.44910508394241333,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,14,0.44562211632728577,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,15,0.4599888026714325,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,4,0.4805765450000763,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,5,0.4489755928516388,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,6,0.4332757890224457,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,7,0.42545661330223083,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,8,0.4302189350128174,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,9,0.43904104828834534,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,10,0.4414239227771759,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,11,0.423007994890213,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,12,0.43723610043525696,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,13,0.43147194385528564,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,14,0.42338281869888306,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+3,15,0.42123058438301086,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,4,0.4983540177345276,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,5,0.4469645619392395,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,6,0.447356641292572,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,7,0.4232177734375,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,8,0.4327664077281952,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,9,0.4317081868648529,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,10,0.4150291979312897,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,11,0.4177635610103607,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,12,0.41900554299354553,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,13,0.43376240134239197,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,14,0.4234113395214081,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+4,15,0.4260055422782898,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,4,0.488649845123291,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,5,0.43953409790992737,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,6,0.4362078309059143,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,7,0.4292706251144409,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,8,0.42127496004104614,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,9,0.4260125458240509,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,10,0.43446946144104004,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,11,0.43651893734931946,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,12,0.43154606223106384,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,13,0.4428461492061615,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,14,0.4333925247192383,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+5,15,0.4325609803199768,Intermediate Integration,Multibranch Autoencoder w/ Shared Bottleneck
+2,4,0.68803346704536,Intermediate Integration,Per-View NMF w/ Concat
+2,5,0.6145616915717556,Intermediate Integration,Per-View NMF w/ Concat
+2,6,0.6356317473763523,Intermediate Integration,Per-View NMF w/ Concat
+2,7,0.6135114804678143,Intermediate Integration,Per-View NMF w/ Concat
+2,8,0.5959507395153957,Intermediate Integration,Per-View NMF w/ Concat
+2,9,0.5531336077793912,Intermediate Integration,Per-View NMF w/ Concat
+2,10,0.5820378633988649,Intermediate Integration,Per-View NMF w/ Concat
+2,11,0.604497012256487,Intermediate Integration,Per-View NMF w/ Concat
+2,12,0.5450094443376342,Intermediate Integration,Per-View NMF w/ Concat
+2,13,0.5477459213528176,Intermediate Integration,Per-View NMF w/ Concat
+2,14,0.5505955643711665,Intermediate Integration,Per-View NMF w/ Concat
+2,15,0.5216334082457723,Intermediate Integration,Per-View NMF w/ Concat
+3,4,0.6456715265462232,Intermediate Integration,Per-View NMF w/ Concat
+3,5,0.5507780625649381,Intermediate Integration,Per-View NMF w/ Concat
+3,6,0.5750336014926103,Intermediate Integration,Per-View NMF w/ Concat
+3,7,0.559426632406803,Intermediate Integration,Per-View NMF w/ Concat
+3,8,0.5578869628740788,Intermediate Integration,Per-View NMF w/ Concat
+3,9,0.5068985962530123,Intermediate Integration,Per-View NMF w/ Concat
+3,10,0.47658889136868504,Intermediate Integration,Per-View NMF w/ Concat
+3,11,0.4756611327701364,Intermediate Integration,Per-View NMF w/ Concat
+3,12,0.4817031748834051,Intermediate Integration,Per-View NMF w/ Concat
+3,13,0.47730476963224383,Intermediate Integration,Per-View NMF w/ Concat
+3,14,0.46989760028021815,Intermediate Integration,Per-View NMF w/ Concat
+3,15,0.4611056058926471,Intermediate Integration,Per-View NMF w/ Concat
+4,4,0.6026719783862975,Intermediate Integration,Per-View NMF w/ Concat
+4,5,0.5102461425181429,Intermediate Integration,Per-View NMF w/ Concat
+4,6,0.4973498593901562,Intermediate Integration,Per-View NMF w/ Concat
+4,7,0.4697149318822712,Intermediate Integration,Per-View NMF w/ Concat
+4,8,0.5043718568028712,Intermediate Integration,Per-View NMF w/ Concat
+4,9,0.4904503304396567,Intermediate Integration,Per-View NMF w/ Concat
+4,10,0.4792626095665991,Intermediate Integration,Per-View NMF w/ Concat
+4,11,0.4523556783084971,Intermediate Integration,Per-View NMF w/ Concat
+4,12,0.4504308656548091,Intermediate Integration,Per-View NMF w/ Concat
+4,13,0.44078309572686303,Intermediate Integration,Per-View NMF w/ Concat
+4,14,0.4157009244981817,Intermediate Integration,Per-View NMF w/ Concat
+4,15,0.4042656491743922,Intermediate Integration,Per-View NMF w/ Concat
+5,4,0.5834992787546242,Intermediate Integration,Per-View NMF w/ Concat
+5,5,0.5637557950919581,Intermediate Integration,Per-View NMF w/ Concat
+5,6,0.46993174829248724,Intermediate Integration,Per-View NMF w/ Concat
+5,7,0.48076156247330953,Intermediate Integration,Per-View NMF w/ Concat
+5,8,0.4374339362696137,Intermediate Integration,Per-View NMF w/ Concat
+5,9,0.4299260518437271,Intermediate Integration,Per-View NMF w/ Concat
+5,10,0.4557712960699896,Intermediate Integration,Per-View NMF w/ Concat
+5,11,0.4171116780591311,Intermediate Integration,Per-View NMF w/ Concat
+5,12,0.4204453581979853,Intermediate Integration,Per-View NMF w/ Concat
+5,13,0.4234984241763245,Intermediate Integration,Per-View NMF w/ Concat
+5,14,0.4330216849027359,Intermediate Integration,Per-View NMF w/ Concat
+5,15,0.4259470998100666,Intermediate Integration,Per-View NMF w/ Concat
+2,4,0.5323500633239746,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,5,0.4925420582294464,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,6,0.401408851146698,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,7,0.440864235162735,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,8,0.4588448107242584,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,9,0.3921941816806793,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,10,0.4288645088672638,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,11,0.40668120980262756,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,12,0.38310548663139343,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,13,0.3847862184047699,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,14,0.41319966316223145,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,15,0.39188000559806824,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,4,0.46483269333839417,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,5,0.45249009132385254,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,6,0.4189891517162323,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,7,0.42534226179122925,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,8,0.35953614115715027,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,9,0.365095853805542,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,10,0.32470542192459106,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,11,0.38183242082595825,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,12,0.3664647042751312,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,13,0.3922269344329834,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,14,0.38264691829681396,Late Integration,Autoencoders Ensemble + Consensus Clustering
+3,15,0.3660109341144562,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,4,0.47781381011009216,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,5,0.4413085877895355,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,6,0.451211541891098,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,7,0.4245279133319855,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,8,0.4108515977859497,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,9,0.3845458924770355,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,10,0.3471530079841614,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,11,0.3587324619293213,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,12,0.3790147304534912,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,13,0.35460367798805237,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,14,0.3972293436527252,Late Integration,Autoencoders Ensemble + Consensus Clustering
+4,15,0.3882980942726135,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,4,0.42440924048423767,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,5,0.3979118764400482,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,6,0.3954167664051056,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,7,0.40998756885528564,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,8,0.4076351821422577,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,9,0.34029504656791687,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,10,0.3359292149543762,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,11,0.3605750501155853,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,12,0.3543579578399658,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,13,0.3534002900123596,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,14,0.3620792627334595,Late Integration,Autoencoders Ensemble + Consensus Clustering
+5,15,0.34450066089630127,Late Integration,Autoencoders Ensemble + Consensus Clustering
+2,4,0.4987929576414292,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,5,0.5302836013156932,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,6,0.5087387340136916,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,7,0.5099274340062437,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,8,0.5174002387268586,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,9,0.5098599243972667,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,10,0.4886802545995106,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,11,0.4969599695565691,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,12,0.4890259794387081,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,13,0.48853629352729816,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,14,0.47406217302598275,Late Integration,Similarity Ensemble + Consensus Clsutering
+2,15,0.4746416974349125,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,4,0.40038125542951686,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,5,0.4043214772702842,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,6,0.4282812339952978,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,7,0.4440062706388497,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,8,0.4757122408285415,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,9,0.5013771864908986,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,10,0.531867866672823,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,11,0.5540488578660694,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,12,0.5710969852906012,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,13,0.5800842718171062,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,14,0.5924482045836613,Late Integration,Similarity Ensemble + Consensus Clsutering
+3,15,0.5818091557492844,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,4,0.3775156994250828,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,5,0.4020030192350596,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,6,0.3993887764558955,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,7,0.41358337709335274,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,8,0.44064686433071626,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,9,0.46147235420709476,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,10,0.4698269391195153,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,11,0.48422529274644693,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,12,0.5115778719078505,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,13,0.5197883166346717,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,14,0.5426069282730651,Late Integration,Similarity Ensemble + Consensus Clsutering
+4,15,0.5208709928541593,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,4,0.34550937223232236,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,5,0.37898997507793314,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,6,0.3829426290401078,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,7,0.38982633590427923,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,8,0.41520070490181127,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,9,0.4349495862892046,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,10,0.4554798108132423,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,11,0.47679342346444664,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,12,0.49322734064022494,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,13,0.5075364936677278,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,14,0.5315340970053563,Late Integration,Similarity Ensemble + Consensus Clsutering
+5,15,0.5432205059703185,Late Integration,Similarity Ensemble + Consensus Clsutering
