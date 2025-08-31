@@ -243,7 +243,7 @@ def compute_cluster_feature_stats(
     - KL averages the divergence between each cluster histogram and the overall
       distribution for that feature (simple mean across clusters).
     """
-    # ---- Build feature matrix (prefix columns by view) and collect Area names
+    # Build feature matrix (prefix columns by view) and collect Area names
     feature_dfs: List[pd.DataFrame] = []
     area_dfs: List[pd.DataFrame] = []
 
@@ -284,7 +284,7 @@ def compute_cluster_feature_stats(
     else:
         all_features_df['Area'] = pd.Series(index=all_features_df.index, dtype='object')
 
-    # ---- Align with labels & area_codes
+    # Align with labels & area_codes
     labels_s = pd.Series(list(labels), index=pd.Index(list(area_codes), name='Area Code'))
     common_idx = labels_s.index.intersection(all_features_df.index)
 
@@ -297,7 +297,7 @@ def compute_cluster_feature_stats(
     all_features_df = all_features_df.loc[common_idx].copy()
     all_features_df['Cluster'] = labels_s.loc[common_idx].values
 
-    # ---- Cluster means (numeric only)
+    # Cluster means (numeric only)
     numeric_cols = all_features_df.select_dtypes(include='number').columns.tolist()
     if not numeric_cols:
         raise ValueError("No numeric features found after cleaning.")
@@ -305,7 +305,7 @@ def compute_cluster_feature_stats(
     cluster_means = all_features_df.groupby('Cluster')[numeric_cols].mean(numeric_only=True)
     eps = 1e-8
 
-    # ---- Z-SCORE ANALYSIS (per feature across clusters)
+    # Z-SCORE ANALYSIS (per feature across clusters)
     mu = cluster_means
     mu_bar = mu.mean(axis=0)           # per-feature mean across clusters
     mu_std = mu.std(axis=0) + eps      # per-feature std across clusters
@@ -326,7 +326,7 @@ def compute_cluster_feature_stats(
         .reset_index(drop=True)
     )
 
-    # --- KL DIVERGENCE ANALYSIS ---  (fixed to handle duplicate-named columns)
+    # KL DIVERGENCE ANALYSIS  (fixed to handle duplicate-named columns)
     kl_scores = {}
 
     for feature in cluster_means.columns:
@@ -386,7 +386,7 @@ def compute_cluster_feature_stats(
         .rename(columns={"index": "Feature"})
     )
 
-    # ---- Top Local Authorities by cluster (simple exemplars)
+    # Top Local Authorities by cluster (simple exemplars)
     la_cols = ['Area']  # keep Area name
     # Keep Area Code too for clarity
     la_df = all_features_df[la_cols].copy()
@@ -480,7 +480,7 @@ def plot_missingness_and_means(
     - Feature labels are prefixed as '<short_view_name>: <original_feature>'.
     - Y-tick backgrounds are lightly shaded by view to help scan across blocks.
     """
-    # --------- Build combined numeric feature matrix with prefixed column names
+    # Build combined numeric feature matrix with prefixed column names
     meta_cols = set(META_COLS or [])
     view_shorten_map = dict(view_shorten_map or {"educational_attainment": "edu.attainment"})
 
@@ -516,7 +516,7 @@ def plot_missingness_and_means(
     if not all_features:
         raise ValueError("No numeric features were found in the provided views after dropping META_COLS.")
 
-    # --------- Align to (area_codes, labels)
+    # Align to (area_codes, labels)
     labels_s = pd.Series(list(labels), index=pd.Index(list(area_codes), name="Area Code"))
     common_idx = full_df.index.intersection(labels_s.index)
 
@@ -540,7 +540,7 @@ def plot_missingness_and_means(
 
     full_df['Cluster'] = pd.Categorical(full_df['Cluster'], categories=cluster_order, ordered=True)
 
-    # --------- Determine numeric feature columns (drop all-NaN columns)
+    # Determine numeric feature columns (drop all-NaN columns)
     numeric_cols = full_df.select_dtypes(include='number').columns.tolist()
     # Remove the 'Cluster' code from numeric list if codes are numeric-like
     if 'Cluster' in numeric_cols:
@@ -551,7 +551,7 @@ def plot_missingness_and_means(
     if not numeric_cols:
         raise ValueError("After alignment, all numeric features are empty (all-NaN).")
 
-    # --------- Missingness (% within cluster)
+    # Missingness (% within cluster)
     cluster_missingness = (
         full_df.groupby('Cluster')[numeric_cols]
         .apply(lambda g: g.isna().sum().astype(float) / max(len(g), 1) * 100.0)
@@ -569,7 +569,7 @@ def plot_missingness_and_means(
         else None
     )
 
-    # --------- Cluster central tendency (median/mean)
+    # Cluster central tendency (median/mean)
     if use_median:
         cluster_tendency = full_df.groupby('Cluster')[numeric_cols].median().T
         tendency_name = "Median"
@@ -602,13 +602,13 @@ def plot_missingness_and_means(
     else:
         annot_means = None
 
-    # --------- Truncate feature labels (keep view prefix intact)
+    # Truncate feature labels (keep view prefix intact)
     def _truncate(label: str) -> str:
         return f"{label[:max_feature_name_length]}..." if len(label) > max_feature_name_length else label
 
     truncated_labels = [ _truncate(name) for name in cluster_tendency_scaled.index ]
 
-    # --------- Figure sizing
+    # Figure sizing
     fig_height = max(min_fig_height, min(len(numeric_cols) * row_height, max_fig_height))
     fig, axes = plt.subplots(1, 2, figsize=(fig_width, fig_height), sharey=True)
 
@@ -655,7 +655,7 @@ def plot_missingness_and_means(
     except Exception:
         pass
 
-    # --------- Shade y-tick backgrounds by view prefix
+    # Shade y-tick backgrounds by view prefix
     # Build prefix -> color map (cycled)
     prefix_to_color: Dict[str, str] = {}
     view_names_in_order = list(views.keys())
@@ -686,7 +686,7 @@ def plot_missingness_and_means(
 
     return cluster_missingness, cluster_tendency_scaled
 
-# --- config ---
+# config
 custom_hex_palette: List[str] = [
     "#0202CD", "#C71585", "#006400", "#8B4513", "#4B0082", "#E55526", "#008080",
     "#708090", "#2253C3", "#FF99CC", "#FFFF00", "#1D0E2A", "#AFF9A2",
@@ -711,7 +711,7 @@ canonical_feature_signs: Dict[str, int] = {
     'wellbeing: Mean happiness yesterday scored 0 (not at all) - 10 (completely)': 1,
 }
 
-# Meta columns fallback (import if available from your preprocessing module)
+# Meta columns fallback (import if available from preprocessing module)
 try:
     from data_preprocessing import DEFAULT_META_COLS as _DEFAULT_META_COLS  # type: ignore
 except Exception:
@@ -965,7 +965,7 @@ def radar_plot_clusters_on_canonical_features(
         theta = float(np.arctan2(cy, cx))
         ax.plot([theta], [r], marker="+", color=color, markersize=16, markeredgewidth=2)
 
-    # ---- Grouped subsets mode ----
+    # Grouped subsets mode
     if grouped_mode:
         # Determine canonical set
         try:
@@ -1006,7 +1006,7 @@ def radar_plot_clusters_on_canonical_features(
             _plot_line(prof_depr, "#C71585", 's', '--', False, _fmt("Most deprived", most_deprived_clusters))
 
     else:
-        # ---- Legacy behavior: per-cluster profiles ----
+        # Legacy behavior: per-cluster profiles
         pre_mask, remapped_labels, legend_names = _remap_exclude_combine(
             labels_arr, exclude_clusters=exclude_clusters, combine_groups=combine_groups
         )

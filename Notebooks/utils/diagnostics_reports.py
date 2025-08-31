@@ -1,4 +1,4 @@
-from __future__ import annotations
+fromyoufrom __future__ import annotations
 from typing import Dict, List, Tuple, Iterable, Optional
 
 import numpy as np
@@ -162,7 +162,7 @@ def compute_clustering_agreement_both(
     return nmi, ari
 
 
-# Flexible helpers for reading your many grid formats
+# Flexible helpers for reading many grid formats
 def _pick_first_col(df: pd.DataFrame, candidates: list[str]) -> str | None:
     for c in candidates:
         if c in df.columns:
@@ -277,7 +277,7 @@ def ablation_importance_from_out(
              - out["metric"]  (float), or
              - out["grid_results"] DataFrame with one of the metric columns above.
     """
-    # ---- helpers (no array truthiness) ----
+    # helpers (no array truthiness)
     def _best_metric_from_grid(grid: pd.DataFrame) -> float | None:
         if isinstance(grid, pd.DataFrame) and not grid.empty:
             for col in ("Silhouette", "silhouette", "score", "Metric", "metric"):
@@ -319,9 +319,9 @@ def ablation_importance_from_out(
             return obj[0], None
         return obj, None
 
-    # ---- choose effective params (overrides > inferred) ----
+    # choose effective params (overrides > inferred)
     try:
-        inferred = _infer_best_params_from_out(method_out)  # your helper, if defined in this module
+        inferred = _infer_best_params_from_out(method_out)  # helper, if defined in this module
     except Exception:
         inferred = {}
     k_eff     = int(k)     if k     is not None else inferred.get("k")
@@ -334,9 +334,9 @@ def ablation_importance_from_out(
             raise KeyError("k/n_pca not set. Pass k=..., n_pca=... or ensure method_out has best_params/grid_results.")
 
         base_ret = multiview_similarity_fusion(views)
-        # use your safe extractor if defined in this module; else expect dict
+        # use safe extractor if defined in this module; else expect dict
         try:
-            S_full, acodes = _extract_S_and_index(base_ret)  # your helper
+            S_full, acodes = _extract_S_and_index(base_ret)  # helper
         except Exception:
             if not (isinstance(base_ret, dict) and "S_fused" in base_ret and "area_codes" in base_ret):
                 raise KeyError("multiview_similarity_fusion must return {'S_fused': S, 'area_codes': ...}.")
@@ -372,9 +372,9 @@ def ablation_importance_from_out(
             rows.append({"Item Removed": vname, "Silhouette": sil, "Δ vs. Baseline": delta})
         return pd.DataFrame(rows).sort_values("Δ vs. Baseline")
 
-    # ======================== LATE PATH ========================
+    # LATE PATH
     if run_late_fn is not None:
-        # for LATE we need rank & k (and optionally n_pca if used in your late runner)
+        # for LATE we need rank & k (and optionally n_pca if used in late runner)
         if k_eff is None and "k" in getattr(method_out, "get", lambda *_: {})("best_params", {}):
             k_eff = method_out["best_params"]["k"]
         if n_pca_eff is None and "n_pca" in getattr(method_out, "get", lambda *_: {})("best_params", {}):
@@ -387,7 +387,7 @@ def ablation_importance_from_out(
 
         def _run(views_subset: dict):
             kwargs = {"views": views_subset, "n_init": n_init, "verbose": False}
-            # only pass ranges that are known (your late fn should accept these)
+            # only pass ranges that are known (late fn should accept these)
             if rank_eff is not None:
                 kwargs["rank_range"] = [int(rank_eff)]
             if n_pca_eff is not None:
@@ -423,7 +423,6 @@ def ablation_importance_from_out(
             rows.append({"Item Removed": vname, "Silhouette": sil_val, "Δ vs. Baseline": delta})
         return pd.DataFrame(rows).sort_values("Δ vs. Baseline")
 
-    # -----------------------------------------------------------
     raise ValueError("Provide either (multiview_similarity_fusion & cluster_from_similarity) or run_late_fn.")
 
 
@@ -480,7 +479,7 @@ def plot_silhouette_report(
     show_overlap_counts: bool = False,
     *,
     method_out: Optional[Dict] = None,
-    # Optional: compute ablation here if you give the callables
+    # Optional: compute ablation here if given the callables
     multiview_similarity_fusion=None,
     cluster_from_similarity=None,
     box_ylim: tuple[float, float] | None = None,
@@ -739,8 +738,8 @@ def plot_fusion_report(
     heatmap_cmap: str = "viridis",
     savepath: Optional[str] = None,
     *,
-    normalize_contrib: bool = True,    # NEW: row-normalize per-LA contributions so plots stay in [0,1]
-    cluster_order: str = "numeric",    # NEW: "numeric" | "appearance" | "size_desc" | "error_asc" | "error_desc"
+    normalize_contrib: bool = True,    # row-normalize per-LA contributions so plots stay in [0,1]
+    cluster_order: str = "numeric",    # "numeric" | "appearance" | "size_desc" | "error_asc" | "error_desc"
     show: bool = True,                 # control display to avoid double plotting
 ):
     """
@@ -780,7 +779,7 @@ def plot_fusion_report(
         }
     """
 
-    # --- Unpack from method_out (TOP-LEVEL keys) ---
+    # Unpack from method_out (TOP-LEVEL keys)
     S_fused = method_out["S_fused"]
     area_codes = method_out["area_codes"]
     similarity_matrices = method_out["similarity_matrices"]
@@ -859,7 +858,7 @@ def plot_fusion_report(
         left=0.06, right=0.985, top=0.92, bottom=0.12, wspace=0.16, hspace=0.16
     )
 
-    # TOP per-view contributions (normalize/clamp so % is valid) ---
+    # TOP per-view contributions (normalize/clamp so % is valid)
     PVC = np.asarray(per_view_contributions, dtype=float)
     if normalize_contrib:
         rs = PVC.sum(axis=1, keepdims=True)
@@ -957,7 +956,7 @@ from scipy.spatial.distance import squareform
 import scipy.cluster.hierarchy as sch
 from typing import List, Optional, Dict, Tuple
 
-# ---------- small helpers ----------
+# helpers
 def _cosine_sim(X: np.ndarray, eps: float = 1e-8) -> np.ndarray:
     """Cosine similarity on rows; safe + symmetric + unit diagonal."""
     X = np.asarray(X, float)
@@ -1063,7 +1062,7 @@ def plot_factorization_report(
 
     Returns dict with {"order", "cluster_order", "figure"}.
     """
-    # ---- unpack required ----
+    # unpack required
     area_codes = method_out["area_codes"]
     labels     = np.asarray(method_out["labels"])
     embedding  = np.asarray(method_out["embedding"])
@@ -1071,13 +1070,13 @@ def plot_factorization_report(
     n = len(area_codes)
     assert embedding.shape[0] == n and labels.shape[0] == n
 
-    # ---- central matrix ----
+    # central matrix
     S_central, central_name = _pick_central_matrix(method_out, embedding)
     S_central = np.asarray(S_central, float)
     S_central = 0.5 * (S_central + S_central.T)
     np.fill_diagonal(S_central, 1.0)
 
-    # ---- per-view similarities + contributions ----
+    # per-view similarities + contributions
     S_list, view_names = _collect_per_view_similarity(method_out)
 
     if S_list:
@@ -1100,7 +1099,7 @@ def plot_factorization_report(
     if not view_names or len(view_names) != V:
         view_names = [f"view_{i}" for i in range(V)]
 
-    # ---- order by linkage on central matrix ----
+    # order by linkage on central matrix
     D = 1.0 - S_central
     np.fill_diagonal(D, 0.0)
     Z = sch.linkage(squareform(D, checks=False), method=linkage_method, optimal_ordering=True)
@@ -1113,7 +1112,7 @@ def plot_factorization_report(
     cluster_sequence = pd.Index(pd.unique(labels_ord))
     k = len(cluster_sequence)
 
-    # ---- fusion/factorization error per cluster ----
+    # fusion/factorization error per cluster
     if S_list:
         errs = np.mean([np.linalg.norm(Sv - S_central, axis=1) for Sv in S_list], axis=0)
     else:
@@ -1125,7 +1124,7 @@ def plot_factorization_report(
     err_df["Cluster"] = pd.Categorical(err_df["Cluster"], categories=list(cluster_sequence), ordered=True)
     err_summary = err_df.groupby("Cluster").agg(mean=("err","mean"), std=("err","std")).reset_index()
 
-    # ---- figure ----
+    # figure
     plt.close("all")
     fig = plt.figure(figsize=figsize, dpi=dpi)
     gs = GridSpec(
@@ -1152,7 +1151,7 @@ def plot_factorization_report(
             panel_mode = "silhouette"
 
     if panel_mode == "contrib":
-        # === your existing contributions code (unchanged) ===
+        # contributions code (unchanged)
         dfc = (pd.DataFrame(C, columns=view_names, index=area_codes)
                 .rename_axis("Area Code").reset_index()
                 .melt(id_vars="Area Code", var_name="View", value_name="Contribution"))
@@ -1183,7 +1182,7 @@ def plot_factorization_report(
                     loc="center left", bbox_to_anchor=(1.01, 0.5))
 
     elif panel_mode == "consensus_margin":
-        # --- consensus margin per cluster, colored with clusters_custom_hex_palette ---
+        # consensus margin per cluster, colored with clusters_custom_hex_palette
         within, rival, margin = _consensus_margin_per_item(S_central, labels)
         dfm = pd.DataFrame({"Cluster": labels, "Margin": margin})
 

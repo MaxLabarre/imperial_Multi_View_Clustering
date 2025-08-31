@@ -266,8 +266,8 @@ def run_early_mmf_pca_kmeans(
 def run_intermediate_pvnmf_pca_kmeans(
     views: Dict[str, pd.DataFrame],
     n_components: int = 2,                            # default per-view NMF rank if no range is provided
-    n_components_range: Iterable[int] | None = None,  # NEW/OLD option 1
-    rank_range: Iterable[int] | None = None,          # NEW alias for backward compatibility
+    n_components_range: Iterable[int] | None = None,
+    rank_range: Iterable[int] | None = None,
     n_pca_range: Iterable[int] = range(2, 6),
     k_range: Iterable[int] = range(4, 16),
     n_init: int | str = "auto",
@@ -287,7 +287,7 @@ def run_intermediate_pvnmf_pca_kmeans(
     """
     warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
-    # --- Backwards-compatible rank range resolution ---
+    # Backwards-compatible rank range resolution
     if rank_range is not None:
         ranks_to_try = list(rank_range)
     elif n_components_range is not None:
@@ -319,7 +319,7 @@ def run_intermediate_pvnmf_pca_kmeans(
     best_contribs: np.ndarray | None = None
 
     for r in ranks_to_try:
-        # ----- Per-view NMF for rank r -----
+        # Per-view NMF for rank r
         G_frames = []
         per_view_latents = []     # aligned per-view G_v (as np.ndarray)
         view_names = []
@@ -369,7 +369,7 @@ def run_intermediate_pvnmf_pca_kmeans(
                 print(f"[PVNMF] No valid views processed for rank={r}. Skipping.")
             continue
 
-        # ----- Align to global area codes; build concatenated latent -----
+        # Align to global area codes; build concatenated latent
         area_codes = sorted(area_codes_union)
         # align each view latent to area_codes
         aligned_latents = []
@@ -384,7 +384,7 @@ def run_intermediate_pvnmf_pca_kmeans(
         G_concat_df = pd.concat([g.reindex(area_codes) for g in G_frames], axis=1).fillna(0.0)
         G_concat = normalize(G_concat_df.values, norm="l2")
 
-        # ----- Build per-view cosine similarities and a central S_fused -----
+        # Build per-view cosine similarities and a central S_fused
         S_list = []
         for Z in per_view_embeddings:
             # cosine sim in [0,1] if Z nonnegative & nonzero; guard zeros
@@ -396,7 +396,7 @@ def run_intermediate_pvnmf_pca_kmeans(
         S_fused = 0.5 * (S_fused + S_fused.T)
         np.fill_diagonal(S_fused, 1.0)
 
-        # ----- Per-LA per-view contributions (inverse deviation from central) -----
+        # Per-LA per-view contributions (inverse deviation from central)
         # for each i, d_v = ||S_v[i,:] - S_fused[i,:]||_2; score_v = 1/(d_v+eps); contrib = score/sum(score)
         eps = 1e-12
         V = len(S_list)
@@ -407,7 +407,7 @@ def run_intermediate_pvnmf_pca_kmeans(
             scores = 1.0 / (diffs + eps)
             contrib[i, :] = scores / scores.sum()
 
-        # ----- PCA/KMeans grid for this rank r -----
+        # PCA/KMeans grid for this rank r
         for n_pca in n_pca_range:
             emb = PCA(n_components=int(n_pca), random_state=random_state).fit_transform(G_concat)
 
@@ -540,7 +540,7 @@ def run_late_nmf_coassoc_pca_kmeans(
     Dedupes results so grid_results has one row per (n_pca, k), with winning Rank.
     """
 
-    # --- Backwards-compatible rank range resolution ---
+    # Backwards-compatible rank range resolution
     if rank_range is not None:
         ranks_to_try = list(rank_range)
     elif n_components_range is not None:
@@ -559,7 +559,7 @@ def run_late_nmf_coassoc_pca_kmeans(
     best_clusterings: dict | None = None
 
     for r in ranks_to_try:
-        # ----- Step 1: Per-view NMF clusterings -----
+        # Per-view NMF clusterings
         clusterings = {}
         all_indices = set()
 
@@ -608,10 +608,10 @@ def run_late_nmf_coassoc_pca_kmeans(
 
         all_codes = sorted(all_indices)
 
-        # ----- Step 2: Build co-association similarity -----
+        # Build co-association similarity
         S_coassoc = build_coassociation_matrix(clusterings, all_codes)
 
-        # ----- Step 3: PCA + KMeans grid -----
+        # PCA + KMeans grid
         # Center S for kernel PCA
         n = S_coassoc.shape[0]
         H = np.eye(n) - np.ones((n, n)) / n

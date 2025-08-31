@@ -61,7 +61,7 @@ def build_union_feature_matrix(views: Dict[str, pd.DataFrame]) -> Tuple[pd.DataF
     area_codes : list[str]
         Row index (Local_Authority_Code) in order.
     """
-    X_union, area_codes = get_combined_views_union(views)  # uses your standard pipeline
+    X_union, area_codes = get_combined_views_union(views)  # uses standard pipeline
     X_union = X_union.apply(pd.to_numeric, errors="coerce")  # defensive: numeric only
     return X_union, list(area_codes)
 
@@ -110,7 +110,7 @@ def run_early_mcs_pca_kmeans(
     """
     One-call Early Integration:
     Concatenate views → masked cosine similarity → (optional row-normalize) →
-    KernelPCA → KMeans grid search. Returns everything you need downstream.
+    KernelPCA → KMeans grid search. Returns everything needed downstream.
 
     Parameters
     ----------
@@ -166,7 +166,7 @@ def run_early_mcs_pca_kmeans(
     )
 
     out = {
-        "S": S,  # return the normalized S you used (for plotting/diagnostics)
+        "S": S,  # return the normalized S used (for plotting/diagnostics)
         "area_codes": area_codes,
         "labels": best["labels"],
         "embedding": best["embedding"],
@@ -542,7 +542,7 @@ def run_mvsf_pca_kmeans(
         "best": best,                                             # {'embedding','labels','silhouette','params','result_df'}
         "grid_results": results_df,                               # DataFrame: PCA_n_components, K, Silhouette
 
-        # convenience copies for easy unpacking downstream (what your code expects)
+        # convenience copies for easy unpacking downstream
         "embedding": best["embedding"],                           # (n, n_pca_best)
         "labels": best["labels"],                                 # (n,)
         "best_params": best["params"],                            # (n_pca_best, k_best)
@@ -563,7 +563,7 @@ def cluster_per_view(
 
     Steps per view:
       1) Standardize column names (ensures 'Local_Authority_Code').
-      2) preprocess_view (drops meta, winsorize/clean as your pipeline defines).
+      2) preprocess_view (drops meta, winsorize/clean as pipeline defines).
       3) exclude_las(view_name) (ONS exclusions).
       4) Set index to 'Local_Authority_Code', coerce numeric, drop rows with any NaN.
       5) Robust scale features; KMeans with provided k.
@@ -603,7 +603,7 @@ def cluster_per_view(
         # Standardize columns
         df = _standardize_columns(df)
 
-        # Preprocess (handles meta; uses your pipeline rules)
+        # Preprocess (handles meta; uses pipeline rules)
         df_clean = preprocess_view(df, meta_cols=DEFAULT_META_COLS)
 
         # Exclusions & indexing

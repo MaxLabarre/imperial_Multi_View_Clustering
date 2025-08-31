@@ -182,7 +182,7 @@ def radar_plot(view_name, views, results_by_view, preprocess_view, color_palette
         color_palette = list(custom_hex_palette)
 
 
-    # Step 1: Preprocess and merge clusters
+    # Preprocess and merge clusters
     df = preprocess_view(views[view_name], view_name)
     clusters_df = results_by_view[view_name]["clusters"]
 
@@ -194,7 +194,7 @@ def radar_plot(view_name, views, results_by_view, preprocess_view, color_palette
         df = df.drop(columns=["Cluster"])  # Drop any existing ambiguous Cluster
     df = df.rename(columns={"Cluster_from_result": "Cluster"})
 
-    # Step 2: Identify and normalize indicator columns
+    # Identify and normalize indicator columns
     exclude_cols = {"Area Code", "Area Level", "Cluster", "index"}
     indicator_cols = [col for col in df.columns if col not in exclude_cols]
     df_scaled = df[indicator_cols].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
@@ -203,12 +203,12 @@ def radar_plot(view_name, views, results_by_view, preprocess_view, color_palette
     df_scaled = df_scaled[df_scaled["Cluster"] != -1]
     cluster_medians = df_scaled.groupby("Cluster").median()
 
-    # Step 3: Radar axes setup
+    # Radar axes setup
     num_vars = len(indicator_cols)
     angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False).tolist()
     angles += angles[:1]  # loop closure
 
-    # Step 4: Plot setup
+    # Plot setup
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
     fig.subplots_adjust(left=0.1, right=0.75)
     ax.set_theta_offset(np.pi / 2.5)  # rotated to avoid title clash
@@ -218,7 +218,7 @@ def radar_plot(view_name, views, results_by_view, preprocess_view, color_palette
     ax.set_xticklabels([])
     ax.set_yticks([])
 
-    # Step 5: Plot cluster shapes and centroids
+    #  Plot cluster shapes and centroids
     for i, (cluster_id, row) in enumerate(cluster_medians.iterrows()):
         values = row.tolist()
         values += values[:1]  # append only the first value once
@@ -236,7 +236,7 @@ def radar_plot(view_name, views, results_by_view, preprocess_view, color_palette
         ax.plot([theta], [r], marker="+", color=color_palette[i % len(color_palette)],
                 markersize=18, markeredgewidth=2)
 
-    # Step 6: Variable Labels (in polar coordinates)
+    # Variable Labels (in polar coordinates)
     label_offset = 1.05  # slight offset beyond the outermost radius
 
     for i, raw_label in enumerate(indicator_cols):
@@ -254,7 +254,7 @@ def radar_plot(view_name, views, results_by_view, preprocess_view, color_palette
             fontsize=13,
             bbox=dict(facecolor='white', alpha=0.9, edgecolor='none', boxstyle='round,pad=0.3')
         )
-    # Step 7: Legend with view name as title
+    # Legend with view name as title
     legend = ax.legend(bbox_to_anchor=(1.25, 0.8), loc='center left', frameon=False, fontsize=14, title=f"{view_name.title()} View")
     legend.get_title().set_fontsize(15)
     

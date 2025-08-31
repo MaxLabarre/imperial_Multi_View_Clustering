@@ -39,7 +39,7 @@ from sklearn.metrics import silhouette_score
 from plots_and_visualisations import plot_best_embedding, radar_plot  # External visualisation module
 
 
-# --- Fixed ONS parameters per view ---
+# Fixed ONS parameters per view
 
 # Known optimal number of clusters per view (ONS-determined)
 ONS_K_VALUES = {
@@ -66,7 +66,7 @@ ONS_EXCLUSIONS = {
     'wellbeing': ['E06000053', 'E09000001']
 }
 
-# --- Preprocessing ---
+# Preprocessing
 
 def preprocess_view(df: pd.DataFrame, view_name: str) -> pd.DataFrame:
     """
@@ -164,7 +164,7 @@ def apply_pca(df_scaled: pd.DataFrame, random_seed: int = 1, variance_threshold:
     return X_pca
 
 
-# --- Clustering utilies ---
+# Clustering utilies
 
 def run_ons_pipeline_gridsearch_k(
     df: pd.DataFrame,
@@ -222,13 +222,13 @@ def run_ons_pipeline_gridsearch_k(
     silhouette_scores : dict
         Dictionary mapping k to silhouette score.
     """
-    # Step 1: Preprocess view
+    # Preprocess view
     df_scaled = preprocess_view(df, view_name)
 
-    # Step 2: PCA
+    # PCA
     X_pca = apply_pca(df_scaled, random_seed=random_state, variance_threshold=variance_threshold)
 
-    # Step 3: Grid search for best k
+    # Grid search for best k
     best_score = -1
     best_k = None
     best_labels = None
@@ -248,7 +248,7 @@ def run_ons_pipeline_gridsearch_k(
             best_k = k
             best_labels = labels
 
-    # Step 4: Create final cluster output
+    # Create final cluster output
     df_clusters = pd.DataFrame({
         "Area Code": df_scaled.index,
         "Cluster": best_labels
@@ -307,24 +307,24 @@ def run_ons_on_views(
         if verbose:
             print(f"\n[{view_name}] Running fixed-k clustering (k={k})")
 
-        # Step 1: Preprocess
+        # Preprocess
         df_scaled = preprocess_view(df, view_name)
 
-        # Step 2: PCA
+        # PCA
         X_pca = apply_pca(df_scaled, random_seed=random_state, variance_threshold=variance_threshold)
 
-        # Step 3: KMeans
+        # KMeans
         model = KMeans(n_clusters=k, random_state=random_state, n_init=n_init)
         labels = model.fit_predict(X_pca)
 
-        # Step 4: Silhouette
+        # Silhouette
         sil = silhouette_score(X_pca, labels)
         silhouette_scores_by_view[view_name] = sil
 
         if verbose:
             print(f"[{view_name}] Silhouette = {sil:.3f} on {len(labels)} areas")
 
-        # Step 5: Package results
+        # Package results
         df_clusters = pd.DataFrame({
             "Area Code": df_scaled.index,
             "Cluster": labels
@@ -342,7 +342,7 @@ def run_ons_on_views(
 
     return results_by_view, silhouette_scores_by_view
 
-# --- Integration strategies for Headline Model ---
+# Integration strategies for Headline Model
 
 def run_ons_headline_model(
     views: dict,
@@ -533,18 +533,18 @@ def run_ons_headline_model_intermediate(
     from sklearn.cluster import KMeans
     from sklearn.metrics import silhouette_score
 
-    # Step 1: Preprocess all views
+    # Preprocess all views
     preprocessed_views = {
         view_name: preprocess_view(df, view_name)
         for view_name, df in views.items()
     }
 
-    # Step 2: Align views on shared Area Codes
+    # Align views on shared Area Codes
     common_area_codes = set.intersection(*(set(df.index) for df in preprocessed_views.values()))
     if verbose:
         print(f"[Intermediate] Shared Area Codes across all views: {len(common_area_codes)}")
 
-    # Step 3: Apply PCA independently to each view and collect latent spaces
+    # Apply PCA independently to each view and collect latent spaces
     latent_spaces = []
     for view_name, df_scaled in preprocessed_views.items():
         df_view = df_scaled.loc[sorted(common_area_codes)]
@@ -554,10 +554,10 @@ def run_ons_headline_model_intermediate(
             print(f"[{view_name}] Latent space shape: {X_pca.shape}")
         latent_spaces.append(X_pca)
 
-    # Step 4: Concatenate latent spaces (intermediate integration)
+    # Concatenate latent spaces (intermediate integration)
     X_combined = np.concatenate(latent_spaces, axis=1)
 
-    # Step 5: Grid search over k for best silhouette score
+    # Grid search over k for best silhouette score
     best_score = -1
     best_k = None
     best_model = None
@@ -579,13 +579,13 @@ def run_ons_headline_model_intermediate(
             best_model = model
             best_labels = labels
 
-    # Step 6: Construct final result dataframe
+    # Construct final result dataframe
     final_df = pd.DataFrame({
         "Area Code": sorted(common_area_codes),
         "HeadlineCluster": best_labels
     })
 
-    # Step 7: Plot best embedding
+    # Plot best embedding
     if verbose:
         plot_best_embedding(X_combined, labels=best_labels)
 
@@ -666,18 +666,18 @@ def run_ons_headline_model_late(
     from sklearn.cluster import KMeans
     from sklearn.metrics import silhouette_score
 
-    # Step 1: Preprocess each view
+    # Preprocess each view
     preprocessed_views = {
         view_name: preprocess_view(df, view_name)
         for view_name, df in views.items()
     }
 
-    # Step 2: Align on common Area Codes
+    # Align on common Area Codes
     common_area_codes = sorted(set.intersection(*(set(df.index) for df in preprocessed_views.values())))
     if verbose:
         print(f"[Late Integration] Shared Area Codes: {len(common_area_codes)}")
 
-    # Step 3: Cluster each view independently
+    # Cluster each view independently
     cluster_label_df = pd.DataFrame(index=common_area_codes)
     best_k_dict = {}
     silhouette_scores_by_view = {}
@@ -713,7 +713,7 @@ def run_ons_headline_model_late(
         if verbose:
             print(f"[{view_name}] Best k = {best_k} | Silhouette = {best_score:.3f}")
 
-    # Step 4: Compute silhouette score on combined cluster labels
+    # Compute silhouette score on combined cluster labels
     X_combined = cluster_label_df.values
     final_model = KMeans(n_clusters=4, random_state=random_state, n_init=n_init)
     final_labels = final_model.fit_predict(X_combined)
@@ -722,11 +722,11 @@ def run_ons_headline_model_late(
     if verbose:
         print(f"[Late Integration] Final silhouette score from combined cluster labels = {final_silhouette:.3f}")
 
-    # Step 5: Final output
+    #  Final output
     final_df = cluster_label_df.copy()
     final_df["HeadlineCluster"] = final_labels
 
-    # Step 6: Plot
+    # Plot
     plot_best_embedding(X_combined, final_labels)
     final_df.index.name = "Area Code"
     cluster_df = final_df.reset_index()[["Area Code", "HeadlineCluster"]].rename(
@@ -750,7 +750,7 @@ def run_ons_headline_model_late(
     return final_df, best_k_dict, final_silhouette, silhouette_scores_by_view
 
 
-# --- Output processing utilities ---
+# Output processing utilities
 
 def export_cluster_labels(results_by_view: dict, headline_df: pd.DataFrame) -> pd.DataFrame:
     """

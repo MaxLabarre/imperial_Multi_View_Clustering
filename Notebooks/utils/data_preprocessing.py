@@ -60,17 +60,17 @@ def align_views_on_index(views, index_col='Local_Authority_Code'):
     for name, df in views.items():
         df = df.copy()
 
-        # Step 1: Rename standard columns
+        # Rename standard columns
         df = df.rename(columns={
             'Area Code': 'Local_Authority_Code',
             'Area ': 'Local_Authority_Name',
             'Area': 'Local_Authority_Name'
         })
 
-        # Step 2: Drop non-numeric metadata columns
+        # Drop non-numeric metadata columns
         df = df.drop(columns=['Local_Authority_Name', 'Area Level'], errors='ignore')
 
-        # Step 3: Clean and set index
+        # Clean and set index
         if index_col not in df.columns:
             raise KeyError(f"Expected index column '{index_col}' not found in view '{name}'.")
 
@@ -87,13 +87,13 @@ def align_views_on_index(views, index_col='Local_Authority_Code'):
         df = df.set_index(index_col)
         df = df[~df.index.duplicated(keep='first')]
 
-        # Step 4: Clean values
+        # Clean values
         df = df.replace(r'(?i)^na$', np.nan, regex=True)  # string 'na', 'NA', etc. to np.nan
         df = df.apply(pd.to_numeric, errors='coerce')    # convert all to numeric, coerce bad values
 
         cleaned_views[name] = df
 
-    # Step 5: Align all views to the common index
+    # Align all views to the common index
     common_index = reduce(lambda x, y: x.intersection(y), [df.index for df in cleaned_views.values()])
     common_index = sorted(common_index)
 
@@ -102,7 +102,7 @@ def align_views_on_index(views, index_col='Local_Authority_Code'):
         for name, df in cleaned_views.items()
     }
 
-    # Step 6: Sanity check
+    # Sanity check
     indices = list(aligned_views.values())
     for i in range(len(indices) - 1):
         assert (indices[i].index == indices[i + 1].index).all(), \
@@ -116,7 +116,7 @@ def align_views_on_index(views, index_col='Local_Authority_Code'):
 
 from typing import Dict, Iterable, Tuple, Optional
 
-# Sensible defaults; override via function args if your project defines these elsewhere.
+# Sensible defaults; override via function args if defined elsewhere.
 DEFAULT_META_COLS = {"Local_Authority_Name", "Area Level"}  # non-numeric, to drop
 DEFAULT_WINSOR_QUANTILES: Tuple[float, float] = (0.01, 0.99)
 DEFAULT_ONS_EXCLUSIONS: Dict[str, Iterable[str]] = {}  # e.g., {"health": ["E09000001", ...]}
@@ -235,7 +235,7 @@ def preprocess_and_align_views(
     -----
     - Mirrors the notebook logic but aligned to the module’s naming standards.
     - For strictly aligned per-view outputs instead of a single concatenated frame,
-      you can call `align_views_on_index` first, then concatenate.
+      Can call `align_views_on_index` first, then concatenate.
     """
     ons_exclusions = ons_exclusions or DEFAULT_ONS_EXCLUSIONS
     cleaned_views = {}
